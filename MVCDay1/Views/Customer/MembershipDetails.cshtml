@@ -1,0 +1,33 @@
+﻿@model MVCDay1.Models.Customer
+@{
+    ViewBag.Title = "MembershipDetails";
+}
+@if (Model == null)
+{
+    <label>No Customer exists</label>
+}
+else
+{
+    <h2>Details of @Model.Name</h2>
+    <ul class="list-group">
+        <li class="list-group-item">Date of Birth:@Model.DateofBirth</li>
+        <li class="list-group-item">Customer Address:@Model.Address</li>
+        <li class="list-group-item">Membership Type:@Model.Membership.MembershipType</li>
+        <li class="list-group-item">Sign Up Fee:@Model.Membership.SignUpFee</li>
+        <li class="list-group-item">Duration:@Model.Membership.Duration</li>
+        <li class="list-group-item">Discount:@Model.Membership.Discount</li>
+    </ul>
+}
+<br />
+<br />
+<h6>@Html.ActionLink("Back To List", "Index", "Customer")</h6>
+<div class="row">
+    <div class="col-md-3 mt-2">
+        @using (Html.BeginForm("Delete", "Customer", new { id = Model.Id }, FormMethod.Post))
+        {
+            <button id="CmdDelete" type="submit" class="btn btn-outline-primary">Delete</button>
+        }
+    </div>
+</div>
+
+

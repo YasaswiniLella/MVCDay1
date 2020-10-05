@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MVCDay1.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+}
+@*@{ 
+    int sum = 0;
+    int a = 10, b = 20;
+    sum = a + b;
+}*@
+@*<h2>Total:@sum</h2>*@
+<h6 class="btn btn-dark">@Html.ActionLink("Add Movie", "Create", "Movies",null,new{@class="nav-link"})</h6>
+<hr />
+
+<h1>Movie Details</h1>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Movie Id</th>
+        <th>Movie Name</th>
+        <th>Action</th>
+        @*<th>Release Date</th>*@
+    </tr>
+    @foreach (var movie in Model)
+    {
+        <tr>
+
+
+            <td>@movie.Id</td>
+            @*<td>@movie.Name</td>*@
+            <td>@Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id },null) </td>
+            @*<td>@movie.ReleaseDate.ToShortDateString()</td>*@
+            <td>@Html.ActionLink("Edit", "Edit", "Movies",new { id = movie.Id },new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete","Details","Movies",new { id = movie.Id },new{@class="btn btn-primary"})</td>
+
+        </tr>
+
+    }
+
+
+        
+</table>
+
